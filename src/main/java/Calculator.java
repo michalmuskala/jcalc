@@ -12,6 +12,10 @@ public class Calculator {
                 return lhs + rhs;
             case '-':
                 return lhs - rhs;
+            case '*':
+                return lhs * rhs;
+            case '/':
+                return lhs / rhs;
             default:
                 throw new RuntimeException("Invalid operation: '" + op + "'");
         }
