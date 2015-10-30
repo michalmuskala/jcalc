@@ -10,8 +10,10 @@ public class Calculator {
         switch (op) {
             case '+':
                 return lhs + rhs;
+            case '-':
+                return lhs - rhs;
             default:
-                throw new RuntimeException("Invalid operation " + op);
+                throw new RuntimeException("Invalid operation: '" + op + "'");
         }
     }
 }

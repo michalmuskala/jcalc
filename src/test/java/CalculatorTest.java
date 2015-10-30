@@ -9,4 +9,11 @@ public class CalculatorTest {
         assertEquals(2.0, calc.eval("1 + 1"), 0);
         assertEquals(4.0, calc.eval("1 + 3"), 0);
     }
+
+    @Test
+    public void it_should_subtract_integers() {
+        Calculator calc = new Calculator();
+        assertEquals(0.0, calc.eval("1 - 1"), 0);
+        assertEquals(-2.0, calc.eval("1 - 3"), 0);
+    }
 }
