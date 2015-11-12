@@ -1,11 +1,34 @@
+import Token.*;
+import Token.Number;
+
+import java.io.BufferedReader;
+import java.io.Reader;
+import java.io.StringReader;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Calculator {
+    private TokenStream tokenStream;
+
+    public Calculator() {
+        Acceptor acceptor = new AlternativeAcceptor()
+                .registerAcceptor(new NumberAcceptor())
+                .registerAcceptor(new CharAcceptor('+'))
+                .registerAcceptor(new CharAcceptor('-'))
+                .registerAcceptor(new CharAcceptor('*'))
+                .registerAcceptor(new CharAcceptor('/'));
+        this.tokenStream = new TokenStream(acceptor);
+    }
+
     public double eval(String expr) {
-        String[] parts = expr.split("\\s");
+        Reader reader = new BufferedReader(new StringReader(expr));
 
-        double lhs = Double.parseDouble(parts[0]);
-        double rhs = Double.parseDouble(parts[2]);
+        List<IToken> list = tokenStream.stream(reader).collect(Collectors.toList());
 
-        char op = parts[1].charAt(0);
+        double lhs = ((Token.Number)list.get(0)).getDoubleValue();
+        double rhs = ((Token.Number)list.get(2)).getDoubleValue();
+
+        char op = ((Char)list.get(1)).getCharValue();
 
         switch (op) {
             case '+':

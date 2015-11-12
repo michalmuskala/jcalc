@@ -15,19 +15,19 @@ public class CalculatorTest {
     @Test
     public void it_adds_integers() {
         assertEquals(2.0, calc.eval("1 + 1"), 0);
-        assertEquals(4.0, calc.eval("1 + 3"), 0);
+        assertEquals(4.0, calc.eval("1.0+3.0"), 0);
     }
 
     @Test
     public void it_adds_doubles() {
-        assertEquals(3.0, calc.eval("1.5 + 1.5"), 0);
+        assertEquals(0.0, calc.eval("1.5+-1.5"), 0);
         assertEquals(2.5, calc.eval("1.5 + 1"), 0);
     }
 
     @Test
     public void it_subtracts_integers() {
         assertEquals(0.0, calc.eval("1 - 1"), 0);
-        assertEquals(-2.0, calc.eval("1 - 3"), 0);
+        assertEquals(-2.0, calc.eval("1- 3"), 0);
     }
 
     @Test
@@ -50,8 +50,8 @@ public class CalculatorTest {
 
     @Test
     public void it_divides_integers() {
-        assertEquals(1.0, calc.eval("1 / 1"), 0);
-        assertEquals(0.5, calc.eval("1 / 2"), 0);
+        assertEquals(1.0, calc.eval("-1 / -1 "), 0);
+        assertEquals(0.5, calc.eval("1/ 2"), 0);
     }
 
     @Test
